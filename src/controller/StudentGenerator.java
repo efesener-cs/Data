@@ -6,7 +6,6 @@ public class StudentGenerator extends Student{
     
     }
     private void generate(){
-        Random rn = new Random();
     }
     private void writeToDB(){
 

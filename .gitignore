@@ -1,21 +1,13 @@
-# Derleme çıktıları
 /build/
 target/
 *.class
-
-# IDE dosyaları
 .vscode/
 .idea/
-
-# Sistem dosyaları
 .DS_Store
 Thumbs.db
-
-# Log dosyaları
 *.log
-
-# Ortam değişkenleri
 .env
-
 gitMan
 .gitignore
+/out
+Data_Management_Homework.iml
