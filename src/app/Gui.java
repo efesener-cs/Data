@@ -1,5 +1,5 @@
 package app;
 
-public class Cli {
+public class Gui {
     
 }
