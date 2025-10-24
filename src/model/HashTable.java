@@ -1,22 +1,24 @@
 package model;
 
+import java.util.HashMap;
+import util.HashUtil;
+
 public class HashTable {
-    class TableHolder {
+
+    private class Table{
         static Object table;
     }
-    private void readData(){
+    private final HashUtil hash;
 
-    }
-    private void initTable(){
+    private static Table table;
 
-    }
     public HashTable(boolean Use_Advanced_Data_Type,int tableSize) {
+        hash = new HashUtil(tableSize);
         if (Use_Advanced_Data_Type){
-        
+            Table.table= new HashMap<Integer, Student>();
         }
         else {
-            TableHolder.table = new int[tableSize];
+            Table.table = new Student[tableSize];
         }
     }
-    
 }

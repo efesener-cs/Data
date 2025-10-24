@@ -1,4 +1,4 @@
-BMÜ3311 VERİ YÖNETİMİ Dersi — 1. Ödev 
+BMÜ3311 VERİ YÖNETİMİ Dersi — 1. Ödev
 Konu: Ardışık Dosya Organizasyonu ile Öğrenci Kayıt Sistemi Geliştirme
 Ödev Türü: Araştırma + Uygulama (Proje)
 

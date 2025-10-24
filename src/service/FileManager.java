@@ -3,23 +3,69 @@ package service;
 import java.io.*;
 
 public class FileManager {
+    
+    public void createFile(String filePath){
+        File file = new File(filePath);
+        if (!file.exists()){
+            try{
+                file.createNewFile();
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void createFile(String filePath,String[] datas){
+        File file = new File(filePath);
+        if (!file.exists()){
+            try{
+                file.createNewFile();
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+            writeFile(filePath, datas);
+        }
+        else {
+            deleteFile(filePath);
+            writeFile(filePath, datas);
+        }
+    }
+
+    public void deleteFile(String filePath){
+        File file = new File(filePath);
+        if(!file.exists()){
+            IO.println("error file can't delete may be doesn't exist");
+        }
+        file.delete();
+    }
+
     public String[] readFile(String filePath){
-        String[] fileLines = {"File can't read"};
-        BufferedReader br;
+        String[] fileLines;
         File file = new File(filePath);
         try {
-            if (file.exists()) {
-                br = new BufferedReader(new FileReader(filePath));
-            } else {
-                InputStream input = getClass().getResourceAsStream("/" + filePath);
-                br = new BufferedReader(new InputStreamReader(input));
-            }
-            fileLines = br.readAllAsString().split("\n");
+            FileReader fr = new FileReader(file);
+            fileLines = fr.readAllAsString().split("\n");
         }
-        catch (Exception e){
+        catch (IOException e){
             e.printStackTrace();
+            fileLines = null;
         }
         return fileLines;
     }
-}
+    public void writeFile(String filePath,String[] datas){
+        File file = new File(filePath);
+        if (!file.canWrite()){
+            createFile(filePath);
+        }
+        try{
+            FileWriter fw = new FileWriter(file);
+            for (String data : datas)
+            fw.append(data+"\n");
+        }catch(IOException e){
+            e.printStackTrace();
+        }
 
+    }
+}
