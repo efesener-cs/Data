@@ -37,7 +37,7 @@ public class StudentGenerator {
             stringGenerator(),
             random.nextInt(100_000_000,999_999_999),
             random.nextFloat(4.0f),
-            random.nextInt(1,240),
+            random.nextInt(1,30),
             random.nextInt(1,60),
             random.nextInt(5),
             random.nextInt(2)==0 ? 'M' : 'F'
@@ -45,8 +45,8 @@ public class StudentGenerator {
         }
     }
 
-    public HashTable get(){
-        return null;
+    private Student[] get(){
+        return students;
     }
 
     private void write(){

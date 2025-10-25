@@ -10,4 +10,5 @@ Thumbs.db
 gitMan
 .gitignore
 /out
-Data_Management_Homework.iml
+Data.iml
+.gitignore

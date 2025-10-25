@@ -14,6 +14,10 @@ public class FileManager {
                 e.printStackTrace();
             }
         }
+        else{
+            deleteFile(filePath);
+            createFile(filePath);
+        }
     }
 
     public void createFile(String filePath,String[] datas){
@@ -61,8 +65,9 @@ public class FileManager {
         }
         try{
             FileWriter fw = new FileWriter(file);
-            for (String data : datas)
-            fw.append(data+"\n");
+            for (String data : datas){
+                fw.append(data+"\n");
+            }
         }catch(IOException e){
             e.printStackTrace();
         }
