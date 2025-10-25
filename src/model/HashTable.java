@@ -1,13 +1,17 @@
 package model;
 
 import util.HashUtil;
+import model.sub_models.*;
 
 public class HashTable{
 
-    private final HashUtil hu;
-    private final int size;
-    public HashTable(boolean useAdvancedDataTypes,int collisionMethod,int size){
-        this.size = size;
-        hu = new HashUtil(size);
+    public final HashUtil hashUtil;
+    public final Storage storage;
+    public final Solition solition;
+
+    public HashTable(boolean useAdvancedDataTypes,boolean useBucket,int size){
+        storage = useAdvancedDataTypes ? new Advanced(size) : new Simple(size);
+        solition = useBucket ? new LinearBucket() : new LinearProbing();
+        hashUtil = new HashUtil(size);
     }
 }

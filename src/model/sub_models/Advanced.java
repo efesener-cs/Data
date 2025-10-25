@@ -1,23 +1,28 @@
 package model.sub_models;
+import java.util.HashMap;
+import java.util.Map;
 
-    interface Storage{
-    void add(String data);
-    void update(int key);
-    Void delete (int key);
-    void get(int key);
+import model.Student;
+public class Advanced implements Storage{
+    private final Map<Integer,Student> students;
+    public Advanced(int size){
+        students = new HashMap<>(size);
     }
-
-class Advanced extends Storage{
-        @Override
-        void add(String data){
-
-        }@Override
-        void update(int key){
-
-        }@Override
-        void delete(int key){
-
-        }@Override
-        void get(int key){
-        }
+    @Override
+    public void add(int key,Student student){
+        students.put(key, student);
     }
+    @Override
+    public Student get(int key){
+        return students.get(key);
+    }
+    @Override
+    public void update(int key, Student student){
+        students.replace(key, student);
+    }
+    @Override
+    public void delete(int key){
+        students.remove(key);
+    }
+        
+}

@@ -1,10 +1,15 @@
 package controller;
 
-import model.HashTable;
-import model.Student;
+import model.*;
 
 public class StudentManager {
-    private static HashTable table;
+
+    private final HashTable table;
+
+    public StudentManager(HashTable table){
+        this.table = table;
+    }
+
     public void createStudent(){
 
     }
@@ -26,11 +31,11 @@ public class StudentManager {
     public void listByGender(){
 
     }
-    public Student searchByNo(){
-        return null;
+    public void searchByNo(){
+
     }
-    public Student searchByName(){
-        return null;
+    public void searchByName(){
+
     }
     public void showHashTable(){
         // table.show();

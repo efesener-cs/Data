@@ -1,8 +1,14 @@
 package model.sub_models;
 
-abstract class Storage{
-    void add(String data);
-    void update(int key);
-    Void delete (int key);
-    void get(int key);
+import model.Student;
+
+public interface Storage{
+
+        void add (int key,Student student);
+
+        Student get(int key);
+
+        void update(int key,Student student);
+
+        void delete(int key);
     }

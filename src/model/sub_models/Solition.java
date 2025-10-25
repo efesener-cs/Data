@@ -1,5 +1,7 @@
 package model.sub_models;
 
-abstract class Solition{
-    void solve();
+import model.HashTable;
+
+public interface Solition{
+    void solve(HashTable table,int index);
 }

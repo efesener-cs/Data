@@ -8,11 +8,13 @@ import service.FileManager;
 
 public class StudentGenerator {
 
-    public StudentGenerator(){
-    
+    public StudentGenerator(int quantity){
+        this.quantity = quantity;
+        generate();
+        write();
     }
 
-    private int quantity;
+    private final int quantity;
     private static final String PATH = "/resource/data/ogrenciler";
     private static final String CHARS =
     "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz";
@@ -29,7 +31,7 @@ public class StudentGenerator {
         return stringBuilder.toString();
     }
 
-    private void generate(int quantity){
+    private void generate(){
         students = new Student[quantity];
         for (int i=0;i<quantity;i++) {
             students[i] = new Student(
