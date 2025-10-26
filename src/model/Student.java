@@ -29,4 +29,13 @@ public record Student(
     public String getName(){
         return name+" "+surname;
     }
+    public int getclass(){
+        return _class;
+    }
+    public int getDepartment(){
+        return departmentRank;
+    }
+    public char getGender(){
+        return gender;
+    }
 }
