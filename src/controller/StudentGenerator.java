@@ -47,10 +47,6 @@ public class StudentGenerator {
         }
     }
 
-    private Student[] get(){
-        return students;
-    }
-
     private void write(){
         String[] data = new String[quantity];
         for (int i=0;i<quantity;i++){

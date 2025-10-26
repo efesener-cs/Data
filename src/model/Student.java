@@ -15,11 +15,18 @@ public record Student(
         return
         "name:"+name+","
         +"surname:"+surname+","
-        +"studentNo:"+studentNo+","
+        +"no:"+studentNo+","
         +"gano:"+gano+","
         +"departmentRank:"+departmentRank+","
         +"classRank:"+classRank+","
         +"class:"+_class+","
         +"gender:"+gender;
+    }
+
+    public int getNo(){
+        return studentNo;
+    }
+    public String getName(){
+        return name+" "+surname;
     }
 }
