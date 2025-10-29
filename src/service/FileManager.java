@@ -68,4 +68,15 @@ public class FileManager {
             e.printStackTrace();
         }
     }
+    public void writeFile(String filePath,String data){
+        File file = new File(filePath);
+        if (!file.canWrite()){
+            createFile(filePath);
+        }
+        try (FileWriter fw = new FileWriter(file)) {
+            fw.append(data).append("\n");
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
 }
