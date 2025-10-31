@@ -263,11 +263,33 @@ private void sortByGanoInRange(int[] key, Student[] students, int start, int end
     }
 
     private void sort(int[] key, int[] value){
-        
+        for (int i = 0; i < value.length - 1; i++) {
+        for (int j = 0; j < value.length - i - 1; j++) {
+            if (value[j] > value[j + 1]) {
+                int tempValue = value[j];
+                value[j] = value[j + 1];
+                value[j + 1] = tempValue;
+                int tempKey = key[j];
+                key[j] = key[j + 1];
+                key[j + 1] = tempKey;
+            }
+        }
+    }
         
     }
     private void sort(int[] key, double[] value){
-        
+        for (int i = 0; i < value.length - 1; i++) {
+        for (int j = 0; j < value.length - i - 1; j++) {
+            if (value[j] > value[j + 1]) {
+                double tempValue = value[j];
+                value[j] = value[j + 1];
+                value[j + 1] = tempValue;
+                int tempKey = key[j];
+                key[j] = key[j + 1];
+                key[j + 1] = tempKey;
+            }
+        }
+    }
     }
 
     public void indexHashTable(){

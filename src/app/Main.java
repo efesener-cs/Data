@@ -21,7 +21,8 @@ public class Main {
         );
     }
     public static void main(){
-        new InitializeSystem();
+        boolean useNewDatabase = true;
+        new InitializeSystem(useNewDatabase);
         
         while (true){
             IO.println("""
@@ -93,6 +94,7 @@ public class Main {
         });
                 break;
                 case 8:
+                manager.listStudents();
                 return;
                 default:
                 IO.print("geçersiz işlem");
