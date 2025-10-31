@@ -49,31 +49,64 @@ public class StudentManager {
                 }
             }
         }
-        return sb.toString().split("\n");
+        String[] students = sb.toString().split("\n");
+        fm.writeFile("/resource/data/ogrenciler",students);
+        return students;
     }
     
     public void listByClass(){
-        Student[] students = getStudents();
-        int[] key = new int[students.length];
-        int[] value = new int[students.length];
-        for (int i=0;i<students.length;i++){
-            key[i] = i;
-            value[i] = students[i].getclass();
-        }
-        sort(key, value);
-        String[] data = new String[students.length];
-        for(int i=0;i<students.length;i++){
-            data[i] = students[key[i]].toString();
-        }
-        fm.writeFile("/resource/data/sinif_sirasi", data);
+    Student[] students = getStudents();
+    int[] key = new int[students.length];
+    int[] classValues = new int[students.length];
+    double[] ganoValues = new double[students.length];
+    
+    for (int i = 0; i < students.length; i++){
+        key[i] = i;
+        classValues[i] = students[i].getclass();
+        ganoValues[i] = students[i].getGano();
     }
+    sort(key, classValues);
+    sortByGanoWithinClass(key, students, classValues);
+    
+    String[] datas = new String[students.length];
+    for(int i = 0; i < students.length; i++){
+        datas[i] = students[key[i]].toString();
+    }
+    fm.writeFile("/resource/data/sinif_sirasi", datas);
+}
+
+private void sortByGanoWithinClass(int[] key, Student[] students, int[] classValues){
+    int start = 0;
+    
+    for (int i = 1; i <= classValues.length; i++){
+        // Sınıf değiştiğinde veya son elemana gelindiğinde o sınıfı sırala
+        if (i == classValues.length || classValues[i] != classValues[start]){
+            sortByGanoInRange(key, students, start, i - 1);
+            start = i;
+        }
+    }
+}
+private void sortByGanoInRange(int[] key, Student[] students, int start, int end){
+    if (start >= end) return;
+    int[] subKey = new int[end - start + 1];
+    double[] ganoValues = new double[end - start + 1];
+    
+    for (int i = 0; i < subKey.length; i++){
+        subKey[i] = key[start + i];
+        ganoValues[i] = students[key[start + i]].getGano();
+    }
+    sort(subKey, ganoValues);
+    for (int i = 0; i < subKey.length; i++){
+        key[start + i] = subKey[i];
+    }
+}
     public void listByDepartment(){
         Student[] students = getStudents();
         int[] key = new int[students.length];
-        int[] value = new int[students.length];
+        double[] value = new double[students.length];
         for (int i=0;i<students.length;i++){
             key[i] = i;
-            value[i] = students[i].getDepartment();
+            value[i] = students[i].getGano();
         }
         sort(key, value);
         String[] data = new String[students.length];
@@ -145,6 +178,7 @@ public class StudentManager {
         }
     }
     public void searchByName(String studentName){
+        
         if (table.solition instanceof LinearProbing){
             for(int i=0;i<table.size;i++){
                 Student temp = table.storage.get(i);
@@ -175,6 +209,7 @@ public class StudentManager {
         }
         
     }
+
     private String[] showHashTable(){
         sb = new StringBuilder();
         String text = "index name surname no gano department classrank class gender";
@@ -204,9 +239,7 @@ public class StudentManager {
         }
         return sb.toString().split("\n");
     }
-    private void sort(int[] key, int[] value){
-        
-    }
+
     private Student[] getStudents(){
         Student[] students = new Student[table.size];
         int count = 0;
@@ -228,6 +261,15 @@ public class StudentManager {
         }
         return students;
     }
+
+    private void sort(int[] key, int[] value){
+        
+        
+    }
+    private void sort(int[] key, double[] value){
+        
+    }
+
     public void indexHashTable(){
         fm.writeFile("/resource/data/hash_index", showHashTable());
     }

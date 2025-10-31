@@ -37,12 +37,10 @@ public class StudentGenerator {
             students[i] = new Student(
             stringGenerator(),
             stringGenerator(),
-            random.nextInt(100_000_000,999_999_999),
-            random.nextFloat(4.0f),
-            random.nextInt(1,30),
-            random.nextInt(1,60),
+            random.nextInt(100_000_000,1_000_000_000),
+            random.nextDouble(4.0),
             random.nextInt(5),
-            random.nextInt(2)==0 ? 'M' : 'F'
+            random.nextInt(2) == 0 ? 'M' : 'F'
             );
         }
     }

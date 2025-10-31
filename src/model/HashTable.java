@@ -17,7 +17,7 @@ public class HashTable{
         solition = useBucket ? new LinearBucket() : new LinearProbing();
         hashUtil = new HashUtil(size);
         if (useBucket){
-            bucket = new HashTable(useAdvancedDataTypes, useBucket, (int)(size*0.3));
+            bucket = new HashTable(useAdvancedDataTypes, false, (int)(size*0.3));
         }
         else{
             bucket=null;

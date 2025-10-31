@@ -4,9 +4,7 @@ public record Student(
     String name,
     String surname,
     int studentNo,
-    float gano,
-    int departmentRank,
-    int classRank,
+    double gano,
     int _class,
     char gender)
 {
@@ -17,8 +15,6 @@ public record Student(
         +"surname:"+surname+","
         +"no:"+studentNo+","
         +"gano:"+gano+","
-        +"departmentRank:"+departmentRank+","
-        +"classRank:"+classRank+","
         +"class:"+_class+","
         +"gender:"+gender;
     }
@@ -32,10 +28,10 @@ public record Student(
     public int getclass(){
         return _class;
     }
-    public int getDepartment(){
-        return departmentRank;
-    }
     public char getGender(){
         return gender;
+    }
+    public double getGano(){
+        return gano;
     }
 }
