@@ -11,89 +11,69 @@ public class Main {
     private static final Scanner sc = new Scanner(System.in);
 
     private static Student studentInput(){
-        return new Student(
-            sc.nextLine(),
-            sc.nextLine(),
-            sc.nextInt(),
-            sc.nextDouble(),
-            sc.nextInt(),
-            sc.nextLine().charAt(0)
-        );
+        sc.nextLine();
+        String name = sc.nextLine();
+        String surname = sc.nextLine();
+        int no = sc.nextInt();
+        double gano = sc.nextDouble();
+        int _class = sc.nextInt();
+        sc.nextLine();
+        char gender = sc.nextLine().charAt(0);
+        return new Student(name,surname,no,gano,_class,gender);
     }
-    public static void main(){
-        boolean useNewDatabase = true;
-        new InitializeSystem(useNewDatabase);
-        
+    static void main(){
+
+        logger.log("init", new Runnable() {
+            @Override
+            public void run() {
+                new InitializeSystem();
+                manager.listByNo();
+                manager.listByDepartment();
+                manager.listByGender();
+                manager.listByClass();
+            }
+        });
         while (true){
             IO.println("""
-                    1: yeni öğrenci ekle (isim,soyisim,no,gano,sınıf cinsiye)
+                    1: yeni öğrenci ekle (isim,soyisim,no,gano,sınıf cinsiyet)
                     2: öğrenci güncelle (index,isim,soyisim,no,gano,sınıf,cinsiyet)
                     3: öğrenci sil(index)
                     4: öğrencileri listele
                     5: no ile ara
                     6: ad ile ara
                     7: tablo göster
-                    8: çıkış
+                    8: öğrenci getir (index)
+                    9: çıkış
                     """);
             int option = sc.nextInt();
             switch(option){
                 case 1:
-                logger.log("addStudent",new Runnable() {
-            @Override
-            public void run() {
-                manager.addStudent(studentInput());
-            }
-        });
+                logger.log("addStudent", () -> manager.addStudent(studentInput()));
                 break;
                 case 2:
-                    logger.log("updateStudent",new Runnable() {
-            @Override
-            public void run() {
-                manager.updateStudent(sc.nextInt(),studentInput());
-            }
-        });
+                    logger.log("updateStudent", () -> manager.updateStudent(sc.nextInt(),studentInput()));
                 break;
                 case 3:
-                    logger.log("deleteStudent",new Runnable() {
-            @Override
-            public void run() {
-                manager.deleteStudent(sc.nextInt());
-            }
-        });
+                    logger.log("deleteStudent", () -> manager.deleteStudent(sc.nextInt()));
                 break;
                 case 4:
-                    logger.log("listStudent",new Runnable() {
-            @Override
-            public void run() {
-                manager.listStudents();
-            }
-        });
+                    logger.log("listStudent", () -> manager.listStudents());
                 break;
                 case 5:
-                    logger.log("searchStudent",new Runnable() {
-            @Override
-            public void run() {
-                manager.searchByNo(sc.nextInt());
-            }
-        });
+                    logger.log("searchStudent", () -> manager.searchByNo(sc.nextInt()));
                 break;
                 case 6:
-                    logger.log("searchStudent",new Runnable() {
-            @Override
-            public void run() {
-                manager.searchByName(sc.nextLine());
-            }
-        });
+                    logger.log("searchStudent", () -> {
+                        sc.nextLine();
+                        manager.searchByName(sc.nextLine());});
                 break;
                 case 7:
-                    logger.log("showtable",new Runnable() {
-            @Override
-            public void run() {
-                manager.indexHashTable();
-            }
-        });
+                    logger.log("showtable", () -> manager.indexHashTable());
                 break;
                 case 8:
+                    logger.log("get student", () -> IO.println(manager.getStudent(sc.nextInt())));
+                break;
+                case 9:
                 manager.listStudents();
                 return;
                 default:

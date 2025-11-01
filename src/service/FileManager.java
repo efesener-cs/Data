@@ -60,7 +60,7 @@ public class FileManager {
         if (!file.canWrite()){
             createFile(filePath);
         }
-        try (FileWriter fw = new FileWriter(file)) {
+        try (FileWriter fw = new FileWriter(file,true)) {
             for (String data : datas) {
             fw.append(data).append("\n");
             }
@@ -73,7 +73,7 @@ public class FileManager {
         if (!file.canWrite()){
             createFile(filePath);
         }
-        try (FileWriter fw = new FileWriter(file)) {
+        try (FileWriter fw = new FileWriter(file,true)) {
             fw.append(data).append("\n");
         }catch(IOException e){
             e.printStackTrace();

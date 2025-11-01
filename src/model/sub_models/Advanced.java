@@ -16,10 +16,7 @@ public class Advanced implements Storage{
     public Student get(int key){
         return students.get(key);
     }
-    @Override
-    public void update(int key, Student student){
-        students.replace(key, student);
-    }
+
     @Override
     public void delete(int key){
         students.remove(key);

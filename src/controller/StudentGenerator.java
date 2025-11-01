@@ -15,7 +15,7 @@ public class StudentGenerator {
     }
 
     private final int quantity;
-    private static final String PATH = "/resource/data/ogrenciler";
+    private static final String PATH = "resource/data/ogrenciler";
     private static final String CHARS =
     "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz";
     private static final Random random = new Random();
@@ -39,7 +39,7 @@ public class StudentGenerator {
             stringGenerator(),
             random.nextInt(100_000_000,1_000_000_000),
             random.nextDouble(4.0),
-            random.nextInt(5),
+            random.nextInt(1,5),
             random.nextInt(2) == 0 ? 'M' : 'F'
             );
         }
@@ -50,6 +50,7 @@ public class StudentGenerator {
         for (int i=0;i<quantity;i++){
             data[i] = students[i].toString();
         }
+        new FileManager().deleteFile(PATH);
         new FileManager().writeFile(PATH,data);
     }
 }

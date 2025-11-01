@@ -5,7 +5,7 @@ import util.TimerUtil;
 public class PerformanceLogger {
     private final FileManager fm = new FileManager();
     private final TimerUtil tu = new TimerUtil();
-    private static final String filePath = "/resource/data/performance";
+    private static final String filePath = "resource/data/performance";
     
     public void log(String taskName,Runnable task){
         String data;

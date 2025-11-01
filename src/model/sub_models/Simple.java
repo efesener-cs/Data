@@ -17,10 +17,7 @@ public class Simple implements Storage{
     public Student get(int key){
         return students[key];
     }
-    @Override
-    public void update(int key,Student newStudent){
-        students[key] = newStudent;
-    }
+
     @Override
     public void delete(int key){
         students[key] = null;

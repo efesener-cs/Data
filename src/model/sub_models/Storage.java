@@ -8,7 +8,5 @@ public interface Storage{
 
         Student get(int key);
 
-        void update(int key,Student student);
-
         void delete(int key);
     }
